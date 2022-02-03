@@ -6,8 +6,11 @@
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
     ~/.config/kitty: kitty
+    ~/.config/nvim: nvim
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [mkdir -p $HOME/.nvim/undo, Create nvim undodir]
+    - [mkdir -p $HOME/.nvim/bak, Create nvim backupdir]
     - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
 
