@@ -11,4 +11,5 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
+    - [nvim +PackerSync +qa, Nvim plugins sync] # TODO this will fail on first run on a clean machine because there's no dracula colorscheme
 
