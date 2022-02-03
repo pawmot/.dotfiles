@@ -37,15 +37,10 @@ packer.init {
   },
 }
 
-return packer.startup(function(use)
-  use "wbthomason/packer.nvim"
-  use "nvim-lua/popup.nvim"
-  use "dracula/vim"
-
-  vim.cmd [[
-    let g:dracula_colorterm = 0
-    colorscheme dracula
-  ]]
+return packer.startup(function()
+  require('init/plugin_conf/packer_nvim').register(packer.use)
+  require('init/plugin_conf/popup_nvim').register(packer.use)
+  require('init/plugin_conf/dracula').register(packer.use)
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
