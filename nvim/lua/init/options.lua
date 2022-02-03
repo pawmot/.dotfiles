@@ -5,6 +5,7 @@ vim.opt.tabstop = 2
 vim.opt.hidden = true
 vim.opt.signcolumn = "yes:2"
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.undofile = true
