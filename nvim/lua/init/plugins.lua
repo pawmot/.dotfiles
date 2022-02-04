@@ -1,5 +1,5 @@
 local fn = vim.fn
--- Install packer if not found 
+-- Install packer if not found
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
@@ -44,6 +44,10 @@ return packer.startup(function()
   require('init/plugin_conf/fzf').register(packer.use)
   require('init/plugin_conf/vim_rooter').register(packer.use)
   require('init/plugin_conf/editorconfig_vim').register(packer.use)
+  require('init/plugin_conf/vim_airline').register(packer.use)
+  require('init/plugin_conf/vim_devicons').register(packer.use)
+  require('init/plugin_conf/fugitive_vim').register(packer.use)
+  require('init/plugin_conf/vim_gitgutter').register(packer.use)
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
