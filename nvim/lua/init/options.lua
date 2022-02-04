@@ -9,7 +9,7 @@ vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.undofile = true
-vim.opt.spell = true
+--vim.opt.spell = true
 vim.opt.title = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -27,4 +27,4 @@ vim.opt.backup = false
 --vim.opt.backupdir = "${XDG_DATA_HOME}/nvim/backup//"
 vim.opt.updatetime = 300 -- Reduce time for highlighting other references
 vim.opt.redrawtime = 10000 -- Allow more time for loading syntax on large files
-
+vim.opt.cmdheight = 2

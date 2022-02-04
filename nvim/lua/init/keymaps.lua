@@ -21,3 +21,5 @@ keymap("i", ";;", "<Esc>A;<Esc>", {});
 keymap("i", ",,", "<Esc>A,<Esc>", {});
 
 --cmap w!! %!sudo tee > /dev/null %
+
+keymap('n', '<leader>q', ':bw<cr>', opts)

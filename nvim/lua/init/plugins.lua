@@ -41,6 +41,9 @@ return packer.startup(function()
   require('init/plugin_conf/packer_nvim').register(packer.use)
   require('init/plugin_conf/popup_nvim').register(packer.use)
   require('init/plugin_conf/dracula').register(packer.use)
+  require('init/plugin_conf/fzf').register(packer.use)
+  require('init/plugin_conf/vim_rooter').register(packer.use)
+  require('init/plugin_conf/editorconfig_vim').register(packer.use)
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
