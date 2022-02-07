@@ -50,10 +50,12 @@ local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/nvim_lspconfig').register(packer.use)
   require('init/plugin_conf/coq_nvim').register(packer.use)
   require('init/plugin_conf/nvim_lsp_installer').register(packer.use)
-  require('init/plugin_conf/rust_vim').register(packer.use)
+  require('init/plugin_conf/nvim_treesitter').register(packer.use)
+  --require('init/plugin_conf/rust_vim').register(packer.use)
+  require('init/plugin_conf/indent_blankline_nvim').register(packer.use)
 
-  vim.cmd [[ syntax enable ]]
-  vim.cmd [[ filetype plugin indent on ]]
+  --vim.cmd [[ syntax enable ]]
+  --vim.cmd [[ filetype plugin indent on ]]
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
