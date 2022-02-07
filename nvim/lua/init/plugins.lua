@@ -36,6 +36,7 @@ return packer.startup(function()
 local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/packer_nvim').register(packer.use)
   require('init/plugin_conf/popup_nvim').register(packer.use)
+  require('init/plugin_conf/plenary_nvim').register(packer.use)
   require('init/plugin_conf/dracula').register(packer.use)
   require('init/plugin_conf/fzf').register(packer.use)
   require('init/plugin_conf/vim_rooter').register(packer.use)
