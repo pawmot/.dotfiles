@@ -14,13 +14,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+-- Setup a keymap to PackerSync
+vim.api.nvim_set_keymap('n', '<leader>ps', ':PackerSync<cr>', {})
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -38,6 +33,7 @@ packer.init {
 }
 
 return packer.startup(function()
+local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/packer_nvim').register(packer.use)
   require('init/plugin_conf/popup_nvim').register(packer.use)
   require('init/plugin_conf/dracula').register(packer.use)
@@ -48,6 +44,13 @@ return packer.startup(function()
   require('init/plugin_conf/vim_devicons').register(packer.use)
   require('init/plugin_conf/fugitive_vim').register(packer.use)
   require('init/plugin_conf/vim_gitgutter').register(packer.use)
+  require('init/plugin_conf/nvim_lspconfig').register(packer.use)
+  require('init/plugin_conf/coq_nvim').register(packer.use)
+  require('init/plugin_conf/nvim_lsp_installer').register(packer.use)
+  require('init/plugin_conf/rust_vim').register(packer.use)
+
+  vim.cmd [[ syntax enable ]]
+  vim.cmd [[ filetype plugin indent on ]]
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

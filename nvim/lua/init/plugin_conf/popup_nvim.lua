@@ -5,3 +5,4 @@ function popup_nvim.register(packer_use)
 end
 
 return popup_nvim
+
