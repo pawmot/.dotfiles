@@ -16,7 +16,7 @@ vim.opt.smartcase = true
 vim.opt.wildmode = { "longest:full", "full" }
 vim.opt.wrap = false
 vim.opt.list = true
-vim.opt.listchars = { tab = "▸\\", trail = "·", extends = "»", precedes = "«", nbsp = "⣿" }
+vim.opt.listchars = { tab = "▸\\", space = "·", extends = "»", precedes = "«", nbsp = "⣿" }
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.joinspaces = false
