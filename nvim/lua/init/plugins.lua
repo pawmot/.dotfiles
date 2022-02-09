@@ -54,6 +54,7 @@ local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/nvim_treesitter').register(packer.use)
   --require('init/plugin_conf/rust_vim').register(packer.use)
   require('init/plugin_conf/indent_blankline_nvim').register(packer.use)
+  require('init/plugin_conf/dashboard').register(packer.use)
 
   --vim.cmd [[ syntax enable ]]
   --vim.cmd [[ filetype plugin indent on ]]
