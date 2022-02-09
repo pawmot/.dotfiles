@@ -10,6 +10,7 @@ function telescope_nvim.register(packer_use)
     },
     pickers = {
       find_files = {
+        find_command = { 'fd', '--strip-cwd-prefix', '--type', 'f' },
         hidden = true,
         layout_strategy = 'horizontal'
       }
