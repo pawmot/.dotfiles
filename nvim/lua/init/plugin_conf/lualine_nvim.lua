@@ -9,7 +9,7 @@ function lualine_nvim.register(packer_use)
       theme = 'dracula'
     },
     sections = {
-      lualine_c = {'filename', 'lsp_progress'}
+      lualine_c = {{'filename', path = 1}, 'lsp_progress'}
     },
     tabline = {
       lualine_a = {'buffers'},
