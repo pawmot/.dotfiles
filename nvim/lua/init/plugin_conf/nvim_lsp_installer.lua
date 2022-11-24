@@ -3,13 +3,16 @@ local nvim_lsp_intaller = {}
 function nvim_lsp_intaller.register(packer_use)
   packer_use {
     'williamboman/nvim-lsp-installer',
-    after = { 'coq_nvim', 'nvim-lspconfig' },
+    after = { 
+      --'coq_nvim', 
+      'nvim-lspconfig' 
+    },
     optional = false,
     config = function() 
       -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
       -- or if the server is already installed).
       local lsp_installer = require('nvim-lsp-installer')
-      local coq = require('coq')
+      --local coq = require('coq')
       lsp_installer.on_server_ready(function(server)
           local opts = {
             on_attach = function(client, bufnr)
@@ -44,8 +47,8 @@ function nvim_lsp_intaller.register(packer_use)
           -- This setup() function will take the provided server configuration and decorate it with the necessary properties
           -- before passing it onwards to lspconfig.
           -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-          --server:setup(opts)
-          server:setup(coq.lsp_ensure_capabilities(opts))
+          server:setup(opts)
+          --server:setup(coq.lsp_ensure_capabilities(opts))
       end)
     end
   }

@@ -6,7 +6,7 @@ function lualine_nvim.register(packer_use)
 
   require('lualine').setup {
     options = {
-      theme = 'dracula'
+      theme = 'tokyonight'
     },
     sections = {
       lualine_c = {{'filename', path = 1}, 'lsp_progress'}

@@ -1,3 +1,5 @@
+require('init/keymaps')
+require('init/keymaps')
 local fn = vim.fn
 -- Install packer if not found
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -37,7 +39,8 @@ local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/packer_nvim').register(packer.use)
   require('init/plugin_conf/popup_nvim').register(packer.use)
   require('init/plugin_conf/plenary_nvim').register(packer.use)
-  require('init/plugin_conf/dracula').register(packer.use)
+  --require('init/plugin_conf/dracula').register(packer.use)
+  require('init/plugin_conf/tokyonight').register(packer.use)
   --require('init/plugin_conf/fzf').register(packer.use)
   require('init/plugin_conf/telescope_nvim').register(packer.use)
   require('init/plugin_conf/vim_rooter').register(packer.use)
@@ -49,12 +52,14 @@ local keymap = vim.api.nvim_set_keymap
   require('init/plugin_conf/fugitive_vim').register(packer.use)
   require('init/plugin_conf/vim_gitgutter').register(packer.use)
   require('init/plugin_conf/nvim_lspconfig').register(packer.use)
-  require('init/plugin_conf/coq_nvim').register(packer.use)
+  --require('init/plugin_conf/coq_nvim').register(packer.use)
+  require('init/plugin_conf/cmp').register(packer.use)
   require('init/plugin_conf/nvim_lsp_installer').register(packer.use)
   require('init/plugin_conf/nvim_treesitter').register(packer.use)
-  --require('init/plugin_conf/rust_vim').register(packer.use)
+  require('init/plugin_conf/rust_vim').register(packer.use)
   require('init/plugin_conf/indent_blankline_nvim').register(packer.use)
   require('init/plugin_conf/dashboard').register(packer.use)
+  require('init/plugin_conf/hop').register(packer.use)
 
   --vim.cmd [[ syntax enable ]]
   --vim.cmd [[ filetype plugin indent on ]]
