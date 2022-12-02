@@ -3,6 +3,7 @@
 ]
 
 - link:
+    ~/.config/i3: i3
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
     ~/.config/kitty: kitty

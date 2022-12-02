@@ -6,46 +6,47 @@ function nvim_treesitter.register(packer_use)
     requires = {
       {
         'p00f/nvim-ts-rainbow',
-        after = 'nvim-treesitter',
         enable = false
       },
       {
-        'windwp/nvim-ts-autotag',
-        after = 'nvim-treesitter'
+        'windwp/nvim-ts-autotag'
       },
       {
-        'JoosepAlviste/nvim-ts-context-commentstring',
-        after = 'nvim-treesitter'
+        'JoosepAlviste/nvim-ts-context-commentstring'
       }
     },
-
-    run = ':TSUpdate'
-  }
-
-  require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'rust', 'typescript', 'lua' },
-    sync_install = false,
-    highlight = {
-      enable = true,
-      additiona_vim_regex_highlighting = false
-    },
-    indent = {
-      enable = true
-    },
-    autopairs = {
-      enable = true
-    },
-    context_commentstring = {
-      enable = true
-    },
-    rainbow = {
-      enable = false,
-      extended_mode = false,
-      max_file_lines = nil,
-    },
-    autotag = {
-      enable = true
-    }
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = { 'rust', 'typescript', 'lua' },
+        sync_install = true,
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
+        },
+        indent = {
+          enable = true
+        },
+        autopairs = {
+          enable = true
+        },
+        context_commentstring = {
+          enable = true
+        },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+          max_file_lines = nil,
+        },
+        autotag = {
+          enable = true
+        }
+      })
+    end,
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end
   }
 end
 
