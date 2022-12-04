@@ -24,6 +24,6 @@ TODO:
 - [ ] use tokyonight for tmux (consider the plugin functionality)
 - [ ] configure autopairs (refer to README)
 - [ ] configure endwise
-- [ ] nvim-treehopper
+- [x] nvim-treehopper
 - [x] treesitter-context
 

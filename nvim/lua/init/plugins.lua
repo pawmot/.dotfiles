@@ -61,6 +61,7 @@ return packer.startup(function()
   require('init/plugin_conf/symbols_outline').register(packer.use)
   require('init/plugin_conf/bufferline').register(packer.use)
   require('init/plugin_conf/autopairs').register(packer.use)
+  require('init/plugin_conf/treehopper').register(packer.use)
 
   --vim.cmd [[ syntax enable ]]
   --vim.cmd [[ filetype plugin indent on ]]

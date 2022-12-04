@@ -1,6 +1,6 @@
-language_support = {}
+local M = {}
 
-function language_support.register(packer_use)
+function M.register(packer_use)
   packer_use {
     'williamboman/mason.nvim',
     requires = {
@@ -97,5 +97,5 @@ function language_support.register(packer_use)
   }
 end
 
-return language_support
+return M
 
