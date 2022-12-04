@@ -12,15 +12,18 @@ TODO:
 - [x] try easymotion or alternatives
 - [x] indent-blankline.nvim
 - [x] nvim-treesitter
-- [ ] treesitter incremental selection - try it!
-- [ ] consider using `requires` instead of `after`
+- [x] treesitter incremental selection - try it!
+- [x] consider using `requires` instead of `after`
 - [x] add LSP servers like rust or typescript to preemptively install on a new system
 - [ ] use impatient.nvim
-- [ ] use full-featured bufferline (e.g. bufferline.nvim)
-- [ ] use symbols-outline.nvim (or similar)
+- [x] use full-featured bufferline (e.g. bufferline.nvim)
+- [x] use symbols-outline.nvim (or similar)
 - [ ] use glepnir/dashboard-nvim (configure)
 - [x] replace nvim-lsp-installer with mason.nvim
 - [x] make LSP servers individual config more modular
 - [ ] use tokyonight for tmux (consider the plugin functionality)
-- [ ] configure autopairs
+- [ ] configure autopairs (refer to README)
+- [ ] configure endwise
+- [ ] nvim-treehopper
+- [x] treesitter-context
 

@@ -1,6 +1,6 @@
-lualine_nvim = {}
+local M = {}
 
-function lualine_nvim.register(packer_use)
+function M.register(packer_use)
   packer_use {
     'nvim-lualine/lualine.nvim',
     requires = {
@@ -16,14 +16,7 @@ function lualine_nvim.register(packer_use)
         sections = {
           lualine_c = {{'filename', path = 1}, 'lsp_progress'}
         },
-        tabline = {
-          lualine_a = {'buffers'},
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {'tabs'}
-        },
+        tabline = {},
         extensions = { 'fugitive' }
       }
     end
@@ -31,5 +24,5 @@ function lualine_nvim.register(packer_use)
 
 end
 
-return lualine_nvim
+return M
 
