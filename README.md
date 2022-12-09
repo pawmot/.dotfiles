@@ -19,7 +19,6 @@ TODO:
 - [ ] use impatient.nvim
 - [x] use full-featured bufferline (e.g. bufferline.nvim)
 - [x] use symbols-outline.nvim (or similar)
-~- [ ] use glepnir/dashboard-nvim (configure)~
 - [x] replace nvim-lsp-installer with mason.nvim
 - [x] make LSP servers individual config more modular
 - [ ] use tokyonight for tmux (consider the plugin functionality)
@@ -33,7 +32,11 @@ TODO:
 - [ ] try copilot
 - [ ] try catppucin theme for ALL
 - [ ] show intro instead of dashboard (probably just wait for https://github.com/nvim-lualine/lualine.nvim/issues/773)
-_REFACTOR_
+
+REFACTOR:
 - [ ] move plugin config outside of the `config` packer fns and configure plugins after installation (use pcall)
 - [ ] use which-key.nvim for keymaps
+
+WON'T DO:
+- [ ] use glepnir/dashboard-nvim (configure)
 
