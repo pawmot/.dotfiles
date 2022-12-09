@@ -20,9 +20,14 @@ keymap("v", ">", ">gv", opts)
 keymap("i", ";;", "<Esc>A;<Esc>", {});
 keymap("i", ",,", "<Esc>A,<Esc>", {});
 
---cmap w!! %!sudo tee > /dev/null %
+-- cmap w!! %!sudo tee > /dev/null %
 
-keymap('n', '<leader>q', ':bw<cr>', opts)
+keymap('n', '<leader>x', ':bw<cr>', opts)
 keymap('n', '<leader>b', ':ls<cr>:b<space>', { noremap = true });
 keymap('n', '<leader>n', ':Explore<cr>', { noremap = true });
+
+keymap('n', '<C-d>', '<C-d>zz', opts)
+keymap('n', '<C-u>', '<C-u>zz', opts)
+keymap('n', 'n', 'nzz', opts)
+keymap('n', 'N', 'Nzz', opts)
 

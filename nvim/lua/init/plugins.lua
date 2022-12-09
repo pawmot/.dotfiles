@@ -55,13 +55,16 @@ return packer.startup(function()
   --require('init/plugin_conf/cmp').register(packer.use)
   require('init/plugin_conf/nvim_treesitter').register(packer.use)
   require('init/plugin_conf/indent_blankline_nvim').register(packer.use)
-  require('init/plugin_conf/dashboard').register(packer.use)
+  --require('init/plugin_conf/dashboard').register(packer.use)
   require('init/plugin_conf/hop').register(packer.use)
   require('init/plugin_conf/dressing').register(packer.use)
   require('init/plugin_conf/symbols_outline').register(packer.use)
   require('init/plugin_conf/bufferline').register(packer.use)
   require('init/plugin_conf/autopairs').register(packer.use)
   require('init/plugin_conf/treehopper').register(packer.use)
+  require('init/plugin_conf/dap').register(packer.use)
+  require('init/plugin_conf/crates').register(packer.use)
+  --require('init/plugin_conf/which_key').register(packer.use)
 
   --vim.cmd [[ syntax enable ]]
   --vim.cmd [[ filetype plugin indent on ]]

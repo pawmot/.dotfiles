@@ -18,7 +18,8 @@ function nvim_treesitter.register(packer_use)
       }
     },
     config = function()
-      require('nvim-treesitter.configs').setup({
+      local ts_configs = require('nvim-treesitter.configs')
+      ts_configs.setup({
         ensure_installed = { 'rust', 'typescript', 'lua' },
         sync_install = true,
         auto_install = true,
@@ -55,7 +56,7 @@ function nvim_treesitter.register(packer_use)
       })
 
       local function ContextSetup(topline)
-        require("treesitter-context").setup({
+        require('treesitter-context').setup({
           enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
           throttle = true, -- Throttles plugin updates (may improve performance)
           max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -72,6 +73,8 @@ function nvim_treesitter.register(packer_use)
               'for',
               'while',
               'if',
+              'else',
+              'else_clause',
               'switch',
               'case',
               'interface',
@@ -80,11 +83,11 @@ function nvim_treesitter.register(packer_use)
             },
 
             rust = {
-              "impl_item",
+              'impl_item',
             },
 
             typescript = {
-              "export_statement"
+              'export_statement'
             },
           },
         })
@@ -97,6 +100,8 @@ function nvim_treesitter.register(packer_use)
         topline = not topline
         ContextSetup(topline)
       end, opts)
+      -- TODO: temporary workaround, remove when https://github.com/p00f/nvim-ts-rainbow/issues/112 is fixed
+      vim.keymap.set('n', '<space>cr', ':TSDisable rainbow<cr>:TSEnable rainbow<cr>', opts)
     end,
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })

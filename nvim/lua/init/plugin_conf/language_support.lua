@@ -16,7 +16,7 @@ function M.register(packer_use)
       })
 
       local opts = { noremap=true, silent=true }
-      vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)
+      vim.keymap.set('n', '<space>q', vim.diagnostic.open_float, opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
       vim.keymap.set('n', '<space>Q', vim.diagnostic.setloclist, opts)
@@ -61,6 +61,9 @@ function M.register(packer_use)
         end,
         ['rust_analyzer'] = function ()
           local rt = require('rust-tools')
+          local extension_path = '/usr/lib/codelldb/'
+          local codelldb_path = extension_path .. 'adapter/codelldb'
+          local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
           rt.setup({
             server = coq.lsp_ensure_capabilities({
               on_attach = function(client, bufnr)
@@ -76,6 +79,10 @@ function M.register(packer_use)
               hover_actions = {
                 auto_focus = true
               }
+            },
+            dap = {
+              adapter = require('rust-tools.dap').get_codelldb_adapter(
+                codelldb_path, liblldb_path)
             }
           })
         end,

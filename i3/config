@@ -56,6 +56,9 @@ bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+default_border pixel 2
+default_floating_border pixel 2
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
@@ -188,9 +191,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+#        status_command i3status
+#}
+
+exec_always --no-startup-id $HOME/.config/polybar/polybar.sh
 
 focus_follows_mouse no
 
@@ -216,3 +221,4 @@ exec --no-startup-id kitty --class htop_scratchpad -e htop
 exec --no-startup-id playerctld daemon
 exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
+

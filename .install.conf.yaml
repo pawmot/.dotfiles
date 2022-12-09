@@ -4,6 +4,7 @@
 
 - link:
     ~/.config/i3: i3
+    ~/.config/polybar: polybar
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
     ~/.config/kitty: kitty

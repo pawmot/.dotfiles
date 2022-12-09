@@ -14,10 +14,12 @@ function M.register(packer_use)
           theme = 'tokyonight'
         },
         sections = {
-          lualine_c = {{'filename', path = 1}, 'lsp_progress'}
+          --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
+          lualine_b = {{'filename', path = 1}, 'diagnostics'},
+          lualine_c = {'lsp_progress'}
         },
         tabline = {},
-        extensions = { 'fugitive' }
+        extensions = { 'fugitive' },
       }
     end
   }
