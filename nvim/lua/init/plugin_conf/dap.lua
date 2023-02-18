@@ -9,7 +9,7 @@ function M.register(packer_use)
     },
     config = function()
       local dap, dapui, dapvt = require('dap'), require('dapui'), require('nvim-dap-virtual-text')
-      dapui.setup()
+      --dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
@@ -23,6 +23,8 @@ function M.register(packer_use)
 
       local opts = { noremap = true, silent = true }
       vim.keymap.set('n', '<space>db', dap.toggle_breakpoint, opts)
+      vim.keymap.set('n', '<space>dv', function() vim.ui.input({ prompt = 'Breakpoint condition' }, dap.set_breakpoint) end, opts)
+      vim.keymap.set('n', '<space>dl', function() vim.ui.input({ prompt = 'Log point message: ' }, function(msg) dap.set_breakpoint(nil, nil, msg) end) end, opts)
       vim.keymap.set('n', '<space>dc', dap.continue, opts)
       vim.keymap.set('n', '<space>di', dap.step_into, opts)
       vim.keymap.set('n', '<space>ds', dap.step_over, opts)

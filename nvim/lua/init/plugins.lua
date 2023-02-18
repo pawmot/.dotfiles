@@ -1,5 +1,4 @@
 require('init/keymaps')
-require('init/keymaps')
 local fn = vim.fn
 -- Install packer if not found
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -64,6 +63,11 @@ return packer.startup(function()
   require('init/plugin_conf/treehopper').register(packer.use)
   require('init/plugin_conf/dap').register(packer.use)
   require('init/plugin_conf/crates').register(packer.use)
+  require('init/plugin_conf/glow').register(packer.use)
+  require('init/plugin_conf/undotree').register(packer.use)
+  require('init/plugin_conf/copilot').register(packer.use)
+  require('init/plugin_conf/terminal').register(packer.use)
+  require('init/plugin_conf/jester').register(packer.use)
   --require('init/plugin_conf/which_key').register(packer.use)
 
   --vim.cmd [[ syntax enable ]]

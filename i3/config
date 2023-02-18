@@ -210,11 +210,11 @@ for_window [class="Arandr"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 
-for_window [class="terminal_scratchpad"] move to scratchpad, border none
+for_window [class="terminal_scratchpad"] move to scratchpad
 bindsym $mod+Shift+t [class="terminal_scratchpad"] scratchpad show
 exec --no-startup-id kitty --class terminal_scratchpad
 
-for_window [class="htop_scratchpad"] move to scratchpad, border none
+for_window [class="htop_scratchpad"] move to scratchpad
 bindsym $mod+Shift+p [class="htop_scratchpad"] scratchpad show
 exec --no-startup-id kitty --class htop_scratchpad -e htop
 

@@ -9,14 +9,15 @@ TODO:
 - [x] use rust-tools.nvim (integrate with mason.nvim)
 - [x] configure rust-tools.nvim keymaps, look&feel etc.
 - [x] configure nvim-dap (keymaps, additional plugins etc.)
-- [ ] configure Rust debugging w/o external tools like codelldb (see rust-tools.nvim, https://alpha2phi.medium.com/neovim-for-beginners-debugging-using-dap-44626a767f57, https://alpha2phi.medium.com/neovim-for-beginners-packer-manager-plugin-e4d84d4c3451)
+- [x] configure Rust debugging w/o external tools like codelldb (see rust-tools.nvim, https://alpha2phi.medium.com/neovim-for-beginners-debugging-using-dap-44626a767f57, https://alpha2phi.medium.com/neovim-for-beginners-packer-manager-plugin-e4d84d4c3451)
+- [ ] configure automatic DAP adapters installation
+- [ ] look for universal Mason installator
 - [x] try easymotion or alternatives
 - [x] indent-blankline.nvim
 - [x] nvim-treesitter
 - [x] treesitter incremental selection - try it!
 - [x] consider using `requires` instead of `after`
 - [x] add LSP servers like rust or typescript to preemptively install on a new system
-- [ ] use impatient.nvim
 - [x] use full-featured bufferline (e.g. bufferline.nvim)
 - [x] use symbols-outline.nvim (or similar)
 - [x] replace nvim-lsp-installer with mason.nvim
@@ -30,13 +31,18 @@ TODO:
 - [ ] crates.nvim
 - [ ] null-ls.nvim
 - [ ] try copilot
-- [ ] try catppucin theme for ALL
+- [ ] try catppucin theme for ALL (include binding for switching the dark/light mode)
 - [ ] show intro instead of dashboard (probably just wait for https://github.com/nvim-lualine/lualine.nvim/issues/773)
+- [ ] make lsp progress nice
+- [ ] snippeting engine (luasnip?)
+- [ ] toggle extended lsp diagnostics
 
 REFACTOR:
+- [ ] use lazy.nvim instead of packer
 - [ ] move plugin config outside of the `config` packer fns and configure plugins after installation (use pcall)
 - [ ] use which-key.nvim for keymaps
 
-WON'T DO:
+WON'T DO (for now?):
+- [ ] use impatient.nvim
 - [ ] use glepnir/dashboard-nvim (configure)
 

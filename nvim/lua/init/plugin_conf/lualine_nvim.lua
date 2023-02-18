@@ -15,8 +15,11 @@ function M.register(packer_use)
         },
         sections = {
           --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
-          lualine_b = {{'filename', path = 1}, 'diagnostics'},
-          lualine_c = {'lsp_progress'}
+          lualine_b = {{'filename', path = 1}, {'filetype', icon_only = true}, 'diagnostics'},
+          lualine_c = {'lsp_progress'},
+          lualine_x = {},
+          lualine_y = {'encoding'},
+          lualine_z = {'progress', 'location'}
         },
         tabline = {},
         extensions = { 'fugitive' },

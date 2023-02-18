@@ -1,6 +1,6 @@
-tokyonight = {}
+local M = {}
 
-function tokyonight.register(packer_use)
+function M.register(packer_use)
   packer_use {
     'folke/tokyonight.nvim',
     config = function()
@@ -15,5 +15,5 @@ function tokyonight.register(packer_use)
   }
 end
 
-return tokyonight
+return M
 

@@ -4,18 +4,11 @@ function nvim_treesitter.register(packer_use)
   packer_use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
-      {
-        'p00f/nvim-ts-rainbow'
-      },
-      {
-        'windwp/nvim-ts-autotag'
-      },
-      {
-        'JoosepAlviste/nvim-ts-context-commentstring'
-      },
-      {
-        'nvim-treesitter/nvim-treesitter-context'
-      }
+      'p00f/nvim-ts-rainbow',
+      'windwp/nvim-ts-autotag',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/nvim-treesitter-context',
+      'nvim-treesitter/playground'
     },
     config = function()
       local ts_configs = require('nvim-treesitter.configs')
@@ -52,6 +45,12 @@ function nvim_treesitter.register(packer_use)
             node_incremental = 'n',
             node_decremental = 'N',
           }
+        },
+        playground = {
+          enable = true,
+          disable = {},
+          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          persist_queries = false, -- Whether the query persists across vim sessions
         }
       })
 
@@ -84,6 +83,7 @@ function nvim_treesitter.register(packer_use)
 
             rust = {
               'impl_item',
+              'match',
             },
 
             typescript = {

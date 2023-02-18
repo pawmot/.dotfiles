@@ -13,8 +13,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided
---keymap("", "<silent> <expr> j (v:count == 0 ? 'gj' : 'j')
---noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+keymap("", "j", function() return vim.v.count > 1 and 'j' or 'gj' end, { noremap = true, silent = true, expr = true })
+keymap("", "k", function() return vim.v.count > 1 and 'k' or 'gk' end, { noremap = true, silent = true, expr = true })
 
 -- Easy insertion of a trailing ; or , from insert mode
 keymap("i", ";;", "<Esc>A;<Esc>", {});
