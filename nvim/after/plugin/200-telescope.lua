@@ -11,7 +11,7 @@ else
       find_files = {
         find_command = { 'fd', '--strip-cwd-prefix', '--type', 'f' },
         hidden = true,
-        layout_strategy = 'vertical'
+        layout_strategy = vim.o.lines > 40 and 'vertical' or 'horizontal'
       }
     }
   }

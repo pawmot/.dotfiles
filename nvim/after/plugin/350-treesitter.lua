@@ -49,7 +49,8 @@ else
     require('treesitter-context').setup({
       enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
       throttle = true, -- Throttles plugin updates (may improve performance)
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit. mode = topline and 'topline' or 'cursor',
+      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit. 
+      mode = topline and 'topline' or 'cursor',
       patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
         -- For all filetypes
         -- Note that setting an entry here replaces all other patterns for this entry.
@@ -84,14 +85,14 @@ else
   end
 
   local opts = { noremap = true, silent = true }
-  local topline = false
+  local topline = true
   ContextSetup(topline)
-  vim.keymap.set('n', '<space>cf', function()
+  vim.keymap.set('n', '<leader>cf', function()
     topline = not topline
     ContextSetup(topline)
   end, opts)
   -- TODO: temporary workaround, remove when https://github.com/p00f/nvim-ts-rainbow/issues/112 is fixed
-  vim.keymap.set('n', '<space>cr', ':TSDisable rainbow<cr>:TSEnable rainbow<cr>', opts)
+  vim.keymap.set('n', '<leader>cr', ':TSDisable rainbow<cr>:TSEnable rainbow<cr>', opts)
 
   local th = require('tsht')
   --find out how to set it up as the author suggests but in lua

@@ -5,7 +5,7 @@ if not ok then
 else
   vim.g.coq_settings = {
     ['auto_start'] = 'shut-up',
-    ['display.ghost_text.context'] = { ' ( ', ' ) ' }
+    ['display.ghost_text.context'] = { ' ⟪ ', ' ⟫ ' }
   }
 
   require('coq_3p') {
@@ -149,7 +149,9 @@ else
     end
   }
 
-  --require('lsp_lines').setup()
+  local lsp_lines = require('lsp_lines')
+  lsp_lines.setup()
+  vim.keymap.set('n', '<leader>l', lsp_lines.toggle, opts)
   require('trouble').setup {
   }
 

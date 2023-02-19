@@ -20,6 +20,7 @@ else
   }
 end
 
+---@diagnostic disable-next-line: redefined-local
 local ok, bufferline = pcall(require, 'bufferline')
 local cat_ok, catppuccin_bufferline = pcall(require, 'catppuccin.groups.integrations.bufferline')
 
@@ -40,6 +41,7 @@ else
   }
 end
 
+---@diagnostic disable-next-line: redefined-local
 local ok, indent_blankline = pcall(require, 'indent_blankline')
 
 if not ok then
@@ -53,10 +55,14 @@ else
 end
 
 -- TODO review the signs
+-- TODO the signs don't work - find out why
 vim.g.gitgutter_sign_added = '✚'
 vim.g.gitgutter_sign_modified = '∼'
-vim.g.gitgutter_sign_removed = '○'
-vim.g.gitgutter_sign_removed_first_line = '△'
-vim.g.gitgutter_sign_modified_removed = '-'
+vim.g.gitgutter_sign_removed = '-'
+vim.g.gitgutter_sign_removed_first_line = '⊼'
+vim.g.gitgutter_sign_modified_removed = '≃'
 vim.g.airline_powerline_fonts = 1
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>hh', vim.cmd.GitGutterLineHighlightsToggle, opts)
 
