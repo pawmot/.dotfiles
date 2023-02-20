@@ -25,7 +25,12 @@ require('lazy').setup({
   'nvim-lua/popup.nvim',
   'stevearc/dressing.nvim',
   'kyazdani42/nvim-web-devicons',
-  'nvim-telescope/telescope.nvim',
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-telescope/telescope-file-browser.nvim'
+    }
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'arkav/lualine-lsp-progress' }
@@ -56,6 +61,10 @@ require('lazy').setup({
       'folke/trouble.nvim',
       'simrat39/symbols-outline.nvim',
       'windwp/nvim-autopairs',
+      {
+        'glepnir/lspsaga.nvim',
+        event = 'Bufread'
+      },
       {
         'saecki/crates.nvim',
         event = 'Bufread Cargo.toml'
@@ -93,7 +102,12 @@ require('lazy').setup({
       'rcarriga/nvim-dap-ui'
     }
   },
-  'ellisonleao/glow.nvim',
+  {
+    'ellisonleao/glow.nvim',
+    config = function()
+      require('glow').setup()
+    end,
+  },
   {
     'mbbill/undotree',
     config = function()
@@ -102,5 +116,6 @@ require('lazy').setup({
     end
   },
   'github/copilot.vim',
-  'David-Kunz/jester'
+  'David-Kunz/jester',
+  'folke/which-key.nvim'
 })

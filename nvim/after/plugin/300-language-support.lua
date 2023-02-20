@@ -71,7 +71,7 @@ else
       {
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {
-          border = "rounded"
+          border = 'rounded'
         }
       },
       bufnr
@@ -94,8 +94,8 @@ else
     end,
     ['rust_analyzer'] = function()
       local rt = require('rust-tools')
-      local mason_registry = require("mason-registry")
-      local codelldb = mason_registry.get_package("codelldb")
+      local mason_registry = require('mason-registry')
+      local codelldb = mason_registry.get_package('codelldb')
       local extension_path = codelldb:get_install_path()
       local codelldb_path = extension_path .. '/extension/adapter/codelldb'
       local liblldb_path = extension_path .. '/extension/lldb/lib/liblldb.so'
@@ -104,13 +104,13 @@ else
           on_attach = function(client, bufnr)
             on_attach(client, bufnr)
             local bufopts = get_bufopts(bufnr)
-            vim.keymap.set("n", "<Leader>rh", rt.hover_actions.hover_actions, bufopts)
-            vim.keymap.set("n", "<Leader>rc", rt.code_action_group.code_action_group, bufopts)
-            vim.keymap.set("n", "<Leader>rr", rt.runnables.runnables, bufopts)
+            vim.keymap.set('n', '<Leader>rh', rt.hover_actions.hover_actions, bufopts)
+            vim.keymap.set('n', '<Leader>rc', rt.code_action_group.code_action_group, bufopts)
+            vim.keymap.set('n', '<Leader>rr', rt.runnables.runnables, bufopts)
           end,
           flags = lsp_flags,
           settings = {
-            ["rust-analyzer"] = {
+            ['rust-analyzer'] = {
               -- TODO: https://github.com/simrat39/rust-tools.nvim/issues/300
               inlayHints = { locationLinks = false }
             }
@@ -152,6 +152,8 @@ else
   local lsp_lines = require('lsp_lines')
   lsp_lines.setup()
   vim.keymap.set('n', '<leader>l', lsp_lines.toggle, opts)
+  -- start with lsp_lines off
+  lsp_lines.toggle()
   require('trouble').setup {
   }
 
@@ -166,7 +168,7 @@ else
     src = {
       coq = {
         enabled = true,
-        name = "crates"
+        name = 'crates'
       }
     }
   }
@@ -181,9 +183,11 @@ else
 
   require('nvim-autopairs').setup {}
 
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
   for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
   end
+
+  --require('lspsaga').setup({})
 end

@@ -35,11 +35,16 @@ TODO:
 - [ ] show intro instead of dashboard (probably just wait for https://github.com/nvim-lualine/lualine.nvim/issues/773)
 - [ ] make lsp progress nice
 - [ ] snippeting engine (luasnip?)
-- [ ] toggle extended lsp diagnostics
+- [ ] toggle extended lsp diagnostics (???)
+- [ ] decide on lspsaga or other plugins
+- [ ] consider folding
+- [ ] consider marks
+- [ ] telescope.menufacture
+- [ ] telescope file browser
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer
-- [ ] move plugin config outside of the `config` packer fns and configure plugins after installation (use pcall)
+- [ ] move plugin config outside of the `config` packer functions and configure plugins after installation (use pcall)
 - [ ] use which-key.nvim for keymaps
 
 WON'T DO (for now?):

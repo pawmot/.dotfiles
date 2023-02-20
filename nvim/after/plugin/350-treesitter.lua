@@ -87,12 +87,12 @@ else
   local opts = { noremap = true, silent = true }
   local topline = true
   ContextSetup(topline)
-  vim.keymap.set('n', '<leader>cf', function()
+  vim.keymap.set('n', '<leader>tc', function()
     topline = not topline
     ContextSetup(topline)
   end, opts)
   -- TODO: temporary workaround, remove when https://github.com/p00f/nvim-ts-rainbow/issues/112 is fixed
-  vim.keymap.set('n', '<leader>cr', ':TSDisable rainbow<cr>:TSEnable rainbow<cr>', opts)
+  vim.keymap.set('n', '<leader>tr', ':TSDisable rainbow<cr>:TSEnable rainbow<cr>', opts)
 
   local th = require('tsht')
   --find out how to set it up as the author suggests but in lua
