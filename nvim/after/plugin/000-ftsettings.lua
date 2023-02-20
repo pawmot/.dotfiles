@@ -1,4 +1,3 @@
-print('ft settings')
 local _ft = vim.api.nvim_create_augroup("FileTypeSettings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "Outline",
