@@ -26,6 +26,10 @@ require('lazy').setup({
   'stevearc/dressing.nvim',
   'kyazdani42/nvim-web-devicons',
   {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make'
+  },
+  {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-telescope/telescope-file-browser.nvim'
@@ -117,5 +121,6 @@ require('lazy').setup({
   },
   'github/copilot.vim',
   'David-Kunz/jester',
-  'folke/which-key.nvim'
+  'folke/which-key.nvim',
+  'folke/todo-comments.nvim',
 })

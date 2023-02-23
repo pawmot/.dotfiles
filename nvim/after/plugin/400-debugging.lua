@@ -25,6 +25,6 @@ else
   vim.keymap.set('n', '<space>ds', dap.step_over, opts)
   vim.keymap.set('n', '<space>do', dap.step_out, opts)
   vim.keymap.set('n', '<space>dt', dap.terminate, opts)
-  -- TODO configure catppuccin
+  -- TODO: configure catppuccin
 end
 

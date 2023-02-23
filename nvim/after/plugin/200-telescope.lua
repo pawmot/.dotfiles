@@ -22,19 +22,26 @@ else
     }
   }
 
+  telescope.load_extension('fzf')
   telescope.load_extension('file_browser')
 
   local telescope_builtin = require('telescope.builtin')
+  local telescope_themes = require('telescope.themes')
   local wk = require('which-key')
   wk.register({
     f = {
       name = 'find',
       f = { telescope_builtin.find_files, 'find files' },
-      e = { function() telescope.extensions.file_browser.file_browser({path = '%:p:h', select_buffer=true}) end, 'find buffers' },
+      e = { function() telescope.extensions.file_browser.file_browser({ path = '%:p:h', select_buffer = true }) end, 'browser files' },
       r = { telescope_builtin.oldfiles, 'show recent files' },
       b = { telescope_builtin.buffers, 'find buffers' },
-      g = { telescope_builtin.live_grep, 'find grep' },
+      g = { telescope_builtin.live_grep, 'grep files\' content' },
       h = { telescope_builtin.help_tags, 'find help tags' },
+      c = {
+        function()
+          telescope_builtin.current_buffer_fuzzy_find(telescope_themes.get_dropdown({ height = 10, previewer = false }))
+        end,
+        'find in current buffer' }
     },
     m = { ':marks<cr>', 'find marks' },
   }, { prefix = '<leader>' })
