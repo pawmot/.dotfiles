@@ -173,13 +173,13 @@ else
     }
   }
 
-  -- TODO find out why autostart isn't working
+  -- TODO: find out why autostart isn't working
   vim.cmd.COQnow()
 
   local symbols_outline = require('symbols-outline')
   symbols_outline.setup()
   vim.keymap.set('n', '<space>S', symbols_outline.toggle_outline, opts)
-  -- TODO look into disabling sign column in the outline
+  -- TODO: look into disabling sign column in the outline
 
   require('nvim-autopairs').setup {}
 

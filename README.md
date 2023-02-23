@@ -41,6 +41,7 @@ TODO:
 - [ ] consider marks
 - [ ] telescope.menufacture
 - [ ] telescope file browser
+- [x] telescope grep/fuzzy find in current buffer. Look at telescope-fzf-native
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer

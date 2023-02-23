@@ -54,8 +54,17 @@ else
   }
 end
 
--- TODO review the signs
--- TODO the signs don't work - find out why
+---@diagnostic disable-next-line: redefined-local
+local ok, todo_comments = pcall(require, 'todo-comments')
+
+if not ok then
+  print('could not load todo-comments')
+else
+  todo_comments.setup {}
+end
+
+-- TODO: review the signs
+-- TODO: the signs don't work - find out why
 vim.g.gitgutter_sign_added = '✚'
 vim.g.gitgutter_sign_modified = '∼'
 vim.g.gitgutter_sign_removed = '-'
