@@ -22,7 +22,6 @@ TODO:
 - [x] use symbols-outline.nvim (or similar)
 - [x] replace nvim-lsp-installer with mason.nvim
 - [x] make LSP servers individual config more modular
-- [ ] use tokyonight for tmux (consider the plugin functionality)
 - [ ] configure autopairs (refer to README)
 - [ ] configure endwise
 - [x] nvim-treehopper
@@ -31,7 +30,8 @@ TODO:
 - [ ] crates.nvim
 - [ ] null-ls.nvim
 - [x] try copilot
-- [ ] try catppucin theme for ALL (include binding for switching the dark/light mode)
+- [x] try catppuccin theme for ALL 
+- [ ] create a switch to toggle dark/light mode (kitty, tmux, neovim)
 - [ ] show intro instead of dashboard (probably just wait for https://github.com/nvim-lualine/lualine.nvim/issues/773)
 - [ ] make lsp progress nice
 - [ ] snippeting engine (luasnip?)
@@ -42,13 +42,16 @@ TODO:
 - [ ] telescope.menufacture
 - [ ] telescope file browser
 - [x] telescope grep/fuzzy find in current buffer. Look at telescope-fzf-native
+- [ ] make the tmux status line nice after moving to catppuccin
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer
-- [ ] move plugin config outside of the `config` packer functions and configure plugins after installation (use pcall)
 - [ ] use which-key.nvim for keymaps
+- [ ] move plugin config INTO `config` lazy.nvim functions - it works differently from packer and looks like the proper place to configure plugins
 
 WON'T DO (for now?):
 - [ ] use impatient.nvim
 - [ ] use glepnir/dashboard-nvim (configure)
+- [ ] use tokyonight for tmux (consider the plugin functionality)
+- [ ] move plugin config outside of the `config` packer functions and configure plugins after installation (use pcall)
 

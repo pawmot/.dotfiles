@@ -11,6 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- TODO: review the signs
+-- TODO: the signs don't work when in after - find out why
+vim.g.gitgutter_sign_added = '✚'
+vim.g.gitgutter_sign_modified = '∼'
+vim.g.gitgutter_sign_removed = '-'
+vim.g.gitgutter_sign_removed_first_line = '⊼'
+vim.g.gitgutter_sign_modified_removed = '≃'
+vim.g.airline_powerline_fonts = 1
+
 require('lazy').setup({
   {
     'catppuccin/nvim',

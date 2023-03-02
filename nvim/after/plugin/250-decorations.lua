@@ -5,12 +5,15 @@ if not ok then
 else
   lualine.setup {
     options = {
-      theme = 'catppuccin'
+      theme = 'catppuccin',
+      section_separators = { left = '', right = ''},
+      component_separators = ''
     },
     sections = {
-      --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
+      lualine_a = {'mode'},
       lualine_b = {{'filename', path = 1}, {'filetype', icon_only = true}, 'diagnostics'},
       lualine_c = {'lsp_progress'},
+      --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
       lualine_x = {},
       lualine_y = {'encoding'},
       lualine_z = {'progress', 'location'}
@@ -62,15 +65,6 @@ if not ok then
 else
   todo_comments.setup {}
 end
-
--- TODO: review the signs
--- TODO: the signs don't work - find out why
-vim.g.gitgutter_sign_added = '✚'
-vim.g.gitgutter_sign_modified = '∼'
-vim.g.gitgutter_sign_removed = '-'
-vim.g.gitgutter_sign_removed_first_line = '⊼'
-vim.g.gitgutter_sign_modified_removed = '≃'
-vim.g.airline_powerline_fonts = 1
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>hh', vim.cmd.GitGutterLineHighlightsToggle, opts)
