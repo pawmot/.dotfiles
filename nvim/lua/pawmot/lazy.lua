@@ -132,4 +132,10 @@ require('lazy').setup({
   'David-Kunz/jester',
   'folke/which-key.nvim',
   'folke/todo-comments.nvim',
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function ()
+      require('colorizer').setup()
+    end
+  }
 })
