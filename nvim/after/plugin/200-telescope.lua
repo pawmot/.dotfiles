@@ -45,6 +45,12 @@ else
     },
     m = { ':marks<cr>', 'find marks' },
   }, { prefix = '<leader>' })
+  wk.register({
+    g = {
+      name = 'lsp',
+      R = { telescope_builtin.lsp_references, 'show LSP references' }
+    }
+  })
   --keymap('n', '<leader>ff', tb.find_files, {})
   --keymap('n', '<leader>fb', tb.buffers, {})
   --keymap('n', '<leader>fg', tb.live_grep, {})
