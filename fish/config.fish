@@ -6,5 +6,6 @@ end
 
 starship init fish | source
 nvm use default
+set -x PATH "$HOME/.cargo/bin" $PATH
 #nvm_load > /dev/stderr
 
