@@ -5,5 +5,6 @@ if status is-interactive
 end
 
 starship init fish | source
+nvm use default
 #nvm_load > /dev/stderr
 
