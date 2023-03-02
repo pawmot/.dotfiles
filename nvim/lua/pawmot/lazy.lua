@@ -132,4 +132,10 @@ require('lazy').setup({
   'David-Kunz/jester',
   'folke/which-key.nvim',
   'folke/todo-comments.nvim',
+  {
+    'folke/neodev.nvim',
+    config = function ()
+      require('neodev').setup()
+    end
+  },
 })

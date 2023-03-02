@@ -67,15 +67,21 @@ else
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>fmt', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-    --[[require('lsp_signature').on_attach(
+    require('lsp_signature').on_attach(
       {
         bind = true, -- This is mandatory, otherwise border config won't get registered.
+        toggle_key = '<M-;>',
+        select_signature_key = '<M-n>',
+        hint_prefix = '🦀 ',
+        hint_enable = true,
+        floating_window = false,
+        check_completion_visible = true,
         handler_opts = {
           border = 'rounded'
         }
       },
       bufnr
-    )]]
+    )
     --
   end
 

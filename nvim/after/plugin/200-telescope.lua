@@ -12,6 +12,9 @@ else
         find_command = { 'fd', '--strip-cwd-prefix', '--type', 'f' },
         hidden = true,
         layout_strategy = vim.o.lines > 40 and 'vertical' or 'horizontal',
+      },
+      lsp_references = {
+        layout_strategy = vim.o.lines > 40 and 'vertical' or 'horizontal',
       }
     },
     extensions = {
