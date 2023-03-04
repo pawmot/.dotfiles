@@ -24,10 +24,19 @@ require('lazy').setup({
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    enabled = false,
     priority = 1000,
     lazy = false,
     config = function()
       vim.cmd.colorscheme 'catppuccin-mocha'
+    end
+  },
+  {
+    'folke/tokyonight.nvim',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme 'tokyonight-night'
     end
   },
   'nvim-lua/plenary.nvim',
@@ -62,6 +71,33 @@ require('lazy').setup({
     version = 'v2'
   },
   {
+    'windwp/nvim-autopairs',
+    config = function()
+      local npairs = require('nvim-autopairs')
+      npairs.setup()
+      local opts = { noremap = true, expr = true }
+      vim.keymap.set('i', '<cr>', function()
+        print('cr')
+        if vim.fn.pumvisible() ~= 0 then
+          if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
+            return npairs.esc('<c-y>')
+          else
+            return npairs.esc('<c-e>') .. npairs.autopairs_cr()
+          end
+        else
+          return npairs.autopairs_cr()
+        end
+      end, opts)
+      vim.keymap.set('i', '<bs>', function()
+        if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
+          return npairs.esc('<c-e>') .. npairs.autopairs_bs()
+        else
+          return npairs.autopairs_bs()
+        end
+      end, opts)
+    end
+  },
+  {
     'williamboman/mason.nvim',
     dependencies = {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -73,7 +109,6 @@ require('lazy').setup({
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       'folke/trouble.nvim',
       'simrat39/symbols-outline.nvim',
-      'windwp/nvim-autopairs',
       {
         'glepnir/lspsaga.nvim',
         event = 'Bufread'
@@ -96,8 +131,8 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      'p00f/nvim-ts-rainbow',
-      'windwp/nvim-ts-autotag',
+      --'p00f/nvim-ts-rainbow',
+      'HiPhish/nvim-ts-rainbow2',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-context',
       'nvim-treesitter/playground',
@@ -134,13 +169,13 @@ require('lazy').setup({
   'folke/todo-comments.nvim',
   {
     'norcalli/nvim-colorizer.lua',
-    config = function ()
+    config = function()
       require('colorizer').setup()
     end
   },
   {
     'folke/neodev.nvim',
-    config = function ()
+    config = function()
       require('neodev').setup()
     end
   },

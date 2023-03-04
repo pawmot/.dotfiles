@@ -187,7 +187,7 @@ else
   vim.keymap.set('n', '<space>S', symbols_outline.toggle_outline, opts)
   -- TODO: look into disabling sign column in the outline
 
-  require('nvim-autopairs').setup {}
+  --require('nvim-autopairs').setup {}
 
   local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
   for type, icon in pairs(signs) do

@@ -30,8 +30,8 @@ TODO:
 - [ ] crates.nvim
 - [ ] null-ls.nvim
 - [x] try copilot
-- [x] try catppuccin theme for ALL 
-- [ ] create a switch to toggle dark/light mode (kitty, tmux, neovim)
+- [x] use tokyonight for tmux (consider the plugin functionality)
+- [x] create a switch to toggle dark/light mode (kitty, tmux, neovim)
 - [ ] show intro instead of dashboard (probably just wait for https://github.com/nvim-lualine/lualine.nvim/issues/773)
 - [ ] make lsp progress nice
 - [ ] snippeting engine (luasnip?)
@@ -42,7 +42,7 @@ TODO:
 - [ ] telescope.menufacture
 - [ ] telescope file browser
 - [x] telescope grep/fuzzy find in current buffer. Look at telescope-fzf-native
-- [ ] make the tmux status line nice after moving to catppuccin
+- [x] make the tmux status line nice after moving everything to tokyonight
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer
@@ -52,6 +52,5 @@ REFACTOR:
 WON'T DO (for now?):
 - [ ] use impatient.nvim
 - [ ] use glepnir/dashboard-nvim (configure)
-- [ ] use tokyonight for tmux (consider the plugin functionality)
 - [ ] move plugin config outside of the `config` packer functions and configure plugins after installation (use pcall)
 
