@@ -14,7 +14,7 @@ else
       lualine_b = {{'filename', path = 1}, {'filetype', icon_only = true}, 'diagnostics'},
       lualine_c = {'lsp_progress'},
       --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
-      lualine_x = {},
+      lualine_x = {{'branch', fmt = function(str) return str and string.len(str) < 25 and str or str:sub(1, 20) .. '[...]' end }},
       lualine_y = {'encoding'},
       lualine_z = {'progress', 'location'}
     },
