@@ -5,7 +5,7 @@ if not ok then
 else
   lualine.setup {
     options = {
-      theme = 'catppuccin',
+      theme = 'tokyonight',
       section_separators = { left = '', right = ''},
       component_separators = ''
     },

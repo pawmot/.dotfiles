@@ -5,7 +5,8 @@ if status is-interactive
 end
 
 starship init fish | source
+#nvm_load > /dev/stderr
 nvm use default
 set -x PATH "$HOME/.cargo/bin" $PATH
-#nvm_load > /dev/stderr
+set -x PATH "$HOME/.local/bin" $PATH
 
