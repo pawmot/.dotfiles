@@ -17,7 +17,7 @@ function set_tokyonight_style -a style
   echo "Reloading tmux..."
   tmux source-file $HOME/.dotfiles/tmux.conf
   echo "Changing colorscheme in all running neovim instances..."
-  type -q nvim-ctrl; or cargo install --git https://github.com/Samasaur1/nvim-ctrl
+  type -q nvim-ctrl; or cargo install --git https://github.com/pawmot/nvim-ctrl
   nvim-ctrl "colorscheme tokyonight-$style"
 end
 
