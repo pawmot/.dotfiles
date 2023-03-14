@@ -181,7 +181,7 @@ else
   vim.keymap.set('n', '<leader>qq', '<cmd>TroubleToggle quickfix<cr>', opts)
   vim.keymap.set('n', '<leader>gR', '<cmd>TroubleToggle lsp_references<cr>', opts)
 
-  local null_ls = require('null-ls')
+  require('null-ls').setup()
   require('crates').setup {
     src = {
       coq = {
