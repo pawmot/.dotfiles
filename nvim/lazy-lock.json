@@ -7,6 +7,7 @@
   "crates.nvim": { "branch": "main", "commit": "aa94d3844d6a12b1a8bf73c8a242ff2f540fb749" },
   "dressing.nvim": { "branch": "master", "commit": "5f44f829481640be0f96759c965ae22a3bcaf7ce" },
   "editorconfig-vim": { "branch": "master", "commit": "5b875ac1aeba22abce3c499c0d5e4f33558fdf2c" },
+  "gitsigns.nvim": { "branch": "main", "commit": "b1f9cf7c5c5639c006c937fc1819e09f358210fc" },
   "glow.nvim": { "branch": "main", "commit": "5a8ccfb1876b1b2e29ea32c63221be6df45870d1" },
   "go.nvim": { "branch": "master", "commit": "3b5b6b8aacfa5be9944b4cfe2673feb68a08655a" },
   "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
@@ -50,7 +51,6 @@
   "trouble.nvim": { "branch": "main", "commit": "67337644e38144b444d026b0df2dc5fa0038930f" },
   "undotree": { "branch": "master", "commit": "485f01efde4e22cb1ce547b9e8c9238f36566f21" },
   "vim-fugitive": { "branch": "master", "commit": "5b52a0f395065d6cb7b65a00a5e17eaf9ebd64d5" },
-  "vim-gitgutter": { "branch": "master", "commit": "3d29f67380c428afbde61da0ac7ae55424f0aa52" },
   "vim-rooter": { "branch": "master", "commit": "4f52ca556a0b9e257bf920658714470ea0320b7a" },
   "which-key.nvim": { "branch": "main", "commit": "fb027738340502b556c3f43051f113bcaa7e8e63" }
 }
