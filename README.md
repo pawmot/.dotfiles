@@ -43,6 +43,7 @@ TODO:
 - [ ] telescope file browser
 - [x] telescope grep/fuzzy find in current buffer. Look at telescope-fzf-native
 - [x] make the tmux status line nice after moving everything to tokyonight
+- [ ] make the LSP progress notifications nicer
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer

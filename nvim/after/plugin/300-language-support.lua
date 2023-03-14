@@ -5,7 +5,8 @@ if not ok then
 else
   vim.g.coq_settings = {
     ['auto_start'] = 'shut-up',
-    ['display.ghost_text.context'] = { ' ⟪ ', ' ⟫ ' }
+    ['display.ghost_text.context'] = { ' ⟪ ', ' ⟫ ' },
+    ['keymap'] = { recommended = false }
   }
 
   require('coq_3p') {
@@ -98,6 +99,16 @@ else
         flags = lsp_flags
       }))
     end,
+    ['elixirls'] = function()
+      local mason_registry = require('mason-registry')
+      local elixirls = mason_registry.get_package('elixir-ls')
+      local elixirls_path = elixirls:get_install_path()
+      require('lspconfig').elixirls.setup(coq.lsp_ensure_capabilities({
+        cmd = { elixirls_path .. '/language_server.sh' },
+        on_attach = on_attach,
+        flags = lsp_flags
+      }))
+    end,
     ['rust_analyzer'] = function()
       local rt = require('rust-tools')
       local mason_registry = require('mason-registry')
@@ -170,12 +181,17 @@ else
   vim.keymap.set('n', '<leader>qq', '<cmd>TroubleToggle quickfix<cr>', opts)
   vim.keymap.set('n', '<leader>gR', '<cmd>TroubleToggle lsp_references<cr>', opts)
 
+  local null_ls = require('null-ls')
   require('crates').setup {
     src = {
       coq = {
         enabled = true,
         name = 'crates'
       }
+    },
+    null_ls = {
+      enabled = true,
+      name = 'crates.nvim'
     }
   }
 

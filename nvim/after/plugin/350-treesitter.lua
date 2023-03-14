@@ -20,6 +20,9 @@ else
     rainbow = {
       enable = true
     },
+    endwise = {
+      enable = true
+    },
     incremental_selection = {
       enable = true,
       keymaps = {

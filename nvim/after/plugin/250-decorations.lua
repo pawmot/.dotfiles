@@ -12,7 +12,7 @@ else
     sections = {
       lualine_a = {'mode'},
       lualine_b = {{'filename', path = 1}, {'filetype', icon_only = true}, 'diagnostics'},
-      lualine_c = {'lsp_progress'},
+      lualine_c = {},
       --lualine_c = {{'filename', path = 1}, 'lsp_progress'}
       lualine_x = {{'branch', fmt = function(str) return str and string.len(str) < 25 and str or str:sub(1, 20) .. '[...]' end }},
       lualine_y = {'encoding'},
@@ -25,14 +25,12 @@ end
 
 ---@diagnostic disable-next-line: redefined-local
 local ok, bufferline = pcall(require, 'bufferline')
-local cat_ok, catppuccin_bufferline = pcall(require, 'catppuccin.groups.integrations.bufferline')
 
 if not ok then
   print('could not load bufferline')
 else
   vim.opt.termguicolors = true
   bufferline.setup{
-    highlights = cat_ok and catppuccin_bufferline.get(),
     options = {
       close_command = nil,
       right_mouse_command = nil,

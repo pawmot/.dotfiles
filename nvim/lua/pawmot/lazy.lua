@@ -55,7 +55,6 @@ require('lazy').setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'arkav/lualine-lsp-progress' }
   },
   {
     'akinsho/bufferline.nvim',
@@ -73,28 +72,7 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
     config = function()
-      local npairs = require('nvim-autopairs')
-      npairs.setup()
-      local opts = { noremap = true, expr = true }
-      vim.keymap.set('i', '<cr>', function()
-        print('cr')
-        if vim.fn.pumvisible() ~= 0 then
-          if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
-            return npairs.esc('<c-y>')
-          else
-            return npairs.esc('<c-e>') .. npairs.autopairs_cr()
-          end
-        else
-          return npairs.autopairs_cr()
-        end
-      end, opts)
-      vim.keymap.set('i', '<bs>', function()
-        if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
-          return npairs.esc('<c-e>') .. npairs.autopairs_bs()
-        else
-          return npairs.autopairs_bs()
-        end
-      end, opts)
+      require('nvim-autopairs').setup()
     end
   },
   {
@@ -115,6 +93,9 @@ require('lazy').setup({
       },
       {
         'saecki/crates.nvim',
+        dependencies = {
+          { 'jose-elias-alvarez/null-ls.nvim' }
+        },
         event = 'Bufread Cargo.toml'
       },
       {
@@ -136,7 +117,8 @@ require('lazy').setup({
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-context',
       'nvim-treesitter/playground',
-      'mfussenegger/nvim-treehopper'
+      'mfussenegger/nvim-treehopper',
+      'RRethy/nvim-treesitter-endwise'
     },
     build = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
@@ -179,4 +161,19 @@ require('lazy').setup({
       require('neodev').setup()
     end
   },
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      local notify = require('notify').async
+      vim.notify = notify
+    end
+  },
+  {
+    'mrded/nvim-lsp-notify',
+    config = function()
+      require('lsp-notify').setup({
+        notify = require('notify')
+      })
+    end
+  }
 })
