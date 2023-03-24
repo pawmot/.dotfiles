@@ -92,6 +92,7 @@ else
 
   local coq = require('coq')
 
+  require('mason-lspconfig').setup {}
   require('mason-lspconfig').setup_handlers {
     function(server_name)
       require('lspconfig')[server_name].setup(coq.lsp_ensure_capabilities({
@@ -163,7 +164,21 @@ else
         on_attach = on_attach,
         flags = lsp_flags
       }))
+    end,
+    ['clangd'] = function()
+      require('lspconfig')['clangd'].setup(coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = {
+          offsetEncoding = { 'utf-16' }
+        }
+      }))
     end
+  }
+
+  require("lspconfig").gleam.setup {
+    on_attach = on_attach,
+    flags = lsp_flags
   }
 
   local lsp_lines = require('lsp_lines')
@@ -181,7 +196,22 @@ else
   vim.keymap.set('n', '<leader>qq', '<cmd>TroubleToggle quickfix<cr>', opts)
   vim.keymap.set('n', '<leader>gR', '<cmd>TroubleToggle lsp_references<cr>', opts)
 
-  require('null-ls').setup()
+  local null_ls = require('null-ls')
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.eslint_d,
+      null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.sqlformat,
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.goimports,
+      null_ls.builtins.formatting.gofmt,
+      null_ls.builtins.formatting.rustfmt,
+      null_ls.builtins.formatting.mix,
+      null_ls.builtins.completion.spell
+    }
+  })
   require('crates').setup {
     src = {
       coq = {

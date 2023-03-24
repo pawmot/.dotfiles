@@ -44,6 +44,7 @@ TODO:
 - [x] telescope grep/fuzzy find in current buffer. Look at telescope-fzf-native
 - [x] make the tmux status line nice after moving everything to tokyonight
 - [ ] make the LSP progress notifications nicer
+- [ ] telescope advanced git search
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer

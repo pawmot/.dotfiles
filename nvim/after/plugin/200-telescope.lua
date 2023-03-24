@@ -5,7 +5,7 @@ if not ok then
 else
   telescope.setup {
     defaults = {
-      file_ignore_patterns = { '^.git/' }
+      file_ignore_patterns = { '^.git/', 'node_modules/', '_build/', '.elixir_ls/' }
     },
     pickers = {
       find_files = {

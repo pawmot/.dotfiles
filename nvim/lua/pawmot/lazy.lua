@@ -32,7 +32,17 @@ require('lazy').setup({
   },
   'nvim-lua/plenary.nvim',
   'nvim-lua/popup.nvim',
-  'stevearc/dressing.nvim',
+  {
+    'stevearc/dressing.nvim',
+    config = function()
+      require('dressing').setup {
+        input = {
+          insert_only = false,
+          start_in_insert = false
+        }
+      }
+    end
+  },
   'kyazdani42/nvim-web-devicons',
   {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -200,7 +210,7 @@ require('lazy').setup({
     'rcarriga/nvim-notify',
     config = function()
       local notify = require('notify')
-      vim.notify = notify
+      --vim.notify = notify
     end
   },
   {
@@ -209,6 +219,16 @@ require('lazy').setup({
       require('lsp-notify').setup({
         notify = require('notify')
       })
+    end
+  }, {
+  'numToStr/Comment.nvim',
+  config = function()
+    require('Comment').setup()
+  end
+  }, {
+    'chentoast/marks.nvim',
+    config = function()
+      require('marks').setup()
     end
   }
 })
