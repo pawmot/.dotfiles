@@ -45,6 +45,7 @@ TODO:
 - [x] make the tmux status line nice after moving everything to tokyonight
 - [ ] make the LSP progress notifications nicer
 - [ ] telescope advanced git search
+- [ ] check out the oxocarbon theme (nyoom-engineering/oxocarbon.nvim)
 
 REFACTOR:
 - [x] use lazy.nvim instead of packer
