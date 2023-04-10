@@ -46,7 +46,9 @@ require("lazy").setup({
                 },
                 groups = {
                     all = {
-                        ["@type.qualifier"] = { link = "@keyword" }
+                        ["@type.qualifier"] = { link = "@keyword" },
+                        ["@lsp.mod.mutable"] = { style = "underline" },
+                        ["@lsp.mod.async"] = { style = "bold,italic" }
                     }
                 }
             }
@@ -288,4 +290,13 @@ require("lazy").setup({
             require("marks").setup()
         end,
     },
+    {
+        'ray-x/guihua.lua'
+    },
+    {
+        'j-hui/fidget.nvim',
+        config = function()
+            require('fidget').setup({})
+            end
+    }
 })

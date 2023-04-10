@@ -30,4 +30,4 @@ vim.opt.updatetime = 300 -- Reduce time for highlighting other references
 vim.opt.redrawtime = 10000 -- Allow more time for loading syntax on large files
 vim.opt.cmdheight = 1
 vim.opt.mouse = ""
-
+vim.opt.verbosefile = vim.fn.stdpath("data") .. "/nvim.log"

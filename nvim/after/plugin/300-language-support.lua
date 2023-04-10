@@ -101,6 +101,12 @@ else
                 flags = lsp_flags,
             }))
         end,
+        ["tsserver"] = function()
+            require("lspconfig").tsserver.setup(coq.lsp_ensure_capabilities({
+                on_attach = on_attach,
+                flags = lsp_flags,
+            }))
+        end,
         ["elixirls"] = function()
             local mason_registry = require("mason-registry")
             local elixirls = mason_registry.get_package("elixir-ls")
@@ -157,6 +163,19 @@ else
             require("lspconfig")["gopls"].setup(coq.lsp_ensure_capabilities({
                 on_attach = on_attach,
                 flags = lsp_flags,
+                settings = {
+                    gopls = {
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            constantValues = true,
+                            functionTypeParameters = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        }
+                    }
+                }
             }))
         end,
         ["clangd"] = function()

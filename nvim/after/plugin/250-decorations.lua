@@ -11,12 +11,7 @@ else
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {--[[ {'filename', path = 1}, ]] {'filetype', icon_only = true}, 'diagnostics', {
-                'lsp_progress',
-                display_components = { 'lsp_client_name', --[[ 'spinner', ]] { 'title', 'percentage', 'message' } },
-                timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-                spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-            }},
+      lualine_b = {{'filename', path = 1}, {'filetype', icon_only = true}, 'diagnostics'},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {{'branch', fmt = function(str) return str and string.len(str) < 25 and str or str:sub(1, 20) .. '[...]' end }},

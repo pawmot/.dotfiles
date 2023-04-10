@@ -10,6 +10,7 @@ atuin init fish | source
 nvm use default
 set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/.local/bin" $PATH
+set -x PATH "$HOME/go/bin" $PATH
 
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
