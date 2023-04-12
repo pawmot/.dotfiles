@@ -190,6 +190,14 @@ require("lazy").setup({
                     { "jose-elias-alvarez/null-ls.nvim" },
                 },
                 event = "Bufread Cargo.toml",
+                config = function()
+                    require('crates').setup {
+                        null_ls = {
+                            enabled = true,
+                            name = "crates.nvim",
+                        },
+                    }
+                end
             },
             {
                 "ms-jpq/coq_nvim",
