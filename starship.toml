@@ -81,3 +81,7 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
+
+[time]
+disabled = false
+

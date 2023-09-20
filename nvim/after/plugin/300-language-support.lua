@@ -31,7 +31,6 @@ else
             "kotlin-language-server",
             "lua-language-server",
             "rust-analyzer",
-            "rustfmt",
             "stylua",
             "tailwindcss-language-server",
             "typescript-language-server",
