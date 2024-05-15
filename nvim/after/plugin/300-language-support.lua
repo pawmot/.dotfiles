@@ -92,6 +92,25 @@ else
 
     local coq = require("coq")
 
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        local function toSnakeCase(str)
+          return string.gsub(str, "%s*[- ]%s*", "_")
+        end
+
+        if client.name == 'omnisharp' then
+          local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+          for i, v in ipairs(tokenModifiers) do
+            tokenModifiers[i] = toSnakeCase(v)
+          end
+          local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+          for i, v in ipairs(tokenTypes) do
+            tokenTypes[i] = toSnakeCase(v)
+          end
+        end
+      end,
+    })
     require("mason-lspconfig").setup({})
     require("mason-lspconfig").setup_handlers({
         function(server_name)
@@ -112,6 +131,13 @@ else
             local elixirls_path = elixirls:get_install_path()
             require("lspconfig").elixirls.setup(coq.lsp_ensure_capabilities({
                 cmd = { elixirls_path .. "/language_server.sh" },
+                on_attach = on_attach,
+                flags = lsp_flags,
+            }))
+        end,
+        ["omnisharp"] = function()
+            require("lspconfig").omnisharp.setup(coq.lsp_ensure_capabilities({
+                cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
                 on_attach = on_attach,
                 flags = lsp_flags,
             }))

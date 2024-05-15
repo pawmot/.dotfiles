@@ -41,18 +41,18 @@ else
   }
 end
 
----@diagnostic disable-next-line: redefined-local
-local ok, indent_blankline = pcall(require, 'indent_blankline')
-
-if not ok then
-  print('could not load indent_blankline')
-else
-  indent_blankline.setup {
-    show_current_context = true,
-    show_current_context_start = true,
-    filetype_exclude = { 'dashboard' }
-  }
-end
+-- ---@diagnostic disable-next-line: redefined-local
+-- local ok, indent_blankline = pcall(require, 'ibl')
+--
+-- if not ok then
+--   print('could not load indent_blankline')
+-- else
+--   indent_blankline.setup {
+--     show_current_context = true,
+--     show_current_context_start = true,
+--     filetype_exclude = { 'dashboard' }
+--   }
+-- end
 
 ---@diagnostic disable-next-line: redefined-local
 local ok, todo_comments = pcall(require, 'todo-comments')

@@ -156,7 +156,7 @@ require("lazy").setup({
 			require("diffview").setup({})
 		end,
 	},
-	"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{
 		"phaazon/hop.nvim",
 		version = "v2",
@@ -304,9 +304,9 @@ require("lazy").setup({
 		},
 		config = function()
 			require("noice").setup({
-                popupmenu = {
-                    enabled = false
-                },
+				popupmenu = {
+					enabled = false,
+				},
 				lsp = {
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 					override = {
