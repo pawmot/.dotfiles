@@ -14,9 +14,6 @@ else
     indent = {
       enable = true
     },
-    context_commentstring = {
-      enable = true
-    },
     rainbow = {
       enable = true
     },

@@ -250,7 +250,7 @@ else
         },
     })
     require("crates").setup({
-        src = {
+        completion = {
             coq = {
                 enabled = true,
                 name = "crates",

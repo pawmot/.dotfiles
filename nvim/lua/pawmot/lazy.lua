@@ -98,13 +98,13 @@ require("lazy").setup({
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
 					local gs = package.loaded.gitsigns
-
+	
 					local function map(mode, l, r, opts)
 						opts = opts or {}
 						opts.buffer = bufnr
 						vim.keymap.set(mode, l, r, opts)
 					end
-
+	
 					-- Navigation
 					map("n", "]c", function()
 						if vim.wo.diff then
@@ -115,7 +115,7 @@ require("lazy").setup({
 						end)
 						return "<Ignore>"
 					end, { expr = true })
-
+	
 					map("n", "[c", function()
 						if vim.wo.diff then
 							return "[c"
@@ -125,7 +125,7 @@ require("lazy").setup({
 						end)
 						return "<Ignore>"
 					end, { expr = true })
-
+	
 					-- Actions
 					map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 					map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
@@ -142,7 +142,7 @@ require("lazy").setup({
 						gs.diffthis("~")
 					end)
 					map("n", "<leader>td", gs.toggle_deleted)
-
+	
 					-- Text object
 					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 				end,
@@ -230,6 +230,7 @@ require("lazy").setup({
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"theHamsta/nvim-dap-virtual-text",
+            "nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
 		},
 	},
