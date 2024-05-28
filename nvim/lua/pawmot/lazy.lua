@@ -87,7 +87,8 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/bufferline.nvim",
-		version = "3.*",
+		-- version = "3.*",
+        branch = 'main',
 	},
 	"airblade/vim-rooter",
 	"editorconfig/editorconfig-vim",
@@ -212,8 +213,7 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			--'p00f/nvim-ts-rainbow',
-			"HiPhish/nvim-ts-rainbow2",
+			"HiPhish/rainbow-delimiters.nvim",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/playground",
