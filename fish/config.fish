@@ -6,6 +6,7 @@ end
 
 starship init fish | source
 atuin init fish | source
+bind k _atuin_bind_up
 #nvm_load > /dev/stderr
 nvm use default
 set -x PATH "$HOME/.cargo/bin" $PATH
