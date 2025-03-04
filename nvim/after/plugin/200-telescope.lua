@@ -9,7 +9,7 @@ else
     },
     pickers = {
       find_files = {
-        find_command = { 'fd', '--strip-cwd-prefix', '--type', 'f' },
+        find_command = { 'fdfind', '--strip-cwd-prefix', '--type', 'f' },
         hidden = true,
         layout_strategy = vim.o.lines > 40 and 'vertical' or 'horizontal',
       },
