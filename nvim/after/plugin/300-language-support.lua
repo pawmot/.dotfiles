@@ -9,9 +9,14 @@ else
         ["keymap"] = { recommended = false },
     }
 
-    require("coq_3p")({
-        { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
+    -- require("coq_3p")({
+    --     { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
+    -- })
+    vim.keymap.set('i', '<C-F>', 'copilot#Accept("\\<CR>")', {
+      expr = true,
+      replace_keycodes = false
     })
+    vim.g.copilot_no_tab_map = true
 
     mason.setup()
     require("mason-tool-installer").setup({
@@ -119,8 +124,8 @@ else
                 flags = lsp_flags,
             }))
         end,
-        ["tsserver"] = function()
-            require("lspconfig").tsserver.setup(coq.lsp_ensure_capabilities({
+        ["ts_ls"] = function()
+            require("lspconfig").ts_ls.setup(coq.lsp_ensure_capabilities({
                 on_attach = on_attach,
                 flags = lsp_flags,
             }))
@@ -187,6 +192,7 @@ else
             require("go").setup()
             require("lspconfig")["gopls"].setup(coq.lsp_ensure_capabilities({
                 on_attach = on_attach,
+                inlay_hints = {enabled = true},
                 flags = lsp_flags,
                 settings = {
                     gopls = {
@@ -218,6 +224,11 @@ else
         on_attach = on_attach,
         flags = lsp_flags,
     })
+
+    vim.lsp.inlay_hint.enable(true)
+    vim.keymap.set("n", "<leader>i", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, {})
 
     local lsp_lines = require("lsp_lines")
     lsp_lines.setup()
