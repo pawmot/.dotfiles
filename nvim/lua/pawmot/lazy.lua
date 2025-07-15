@@ -171,7 +171,6 @@ require("lazy").setup({
 	{
 		"williamboman/mason.nvim",
 		dependencies = {
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 			"ray-x/lsp_signature.nvim",
@@ -180,6 +179,7 @@ require("lazy").setup({
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			"folke/trouble.nvim",
 			"simrat39/symbols-outline.nvim",
+            "mason-org/mason-registry",
 			{
 				"glepnir/lspsaga.nvim",
 				event = "Bufread",

@@ -19,13 +19,14 @@ else
     vim.g.copilot_no_tab_map = true
 
     mason.setup()
-    require("mason-tool-installer").setup({
+    -- TODO: use mason-nvim-dap for DAP and mason-null-ls for linters
+    require("mason-lspconfig").setup({
         ensure_installed = {
             "clangd",
             "codelldb",
-            "css-lsp",
+            "cssls",
             "delve",
-            "eslint-lsp",
+            "eslint",
             "goimports",
             "golangci-lint",
             "gopls",
@@ -33,14 +34,15 @@ else
             "jdtls",
             "js-debug-adapter",
             "kotlin-debug-adapter",
-            "kotlin-language-server",
-            "lua-language-server",
-            "rust-analyzer",
+            "kotlin_language_server",
+            "lua_ls",
+            "rust_analyzer",
             "stylua",
-            "tailwindcss-language-server",
-            "typescript-language-server",
+            "tailwindcss",
+            "ts_ls",
         },
     })
+
     local opts = { noremap = true, silent = true }
     -- TODO: think about another keymap
     --vim.keymap.set('n', '<space>q', vim.diagnostic.open_float, opts)
@@ -116,109 +118,101 @@ else
         end
       end,
     })
-    require("mason-lspconfig").setup({})
-    require("mason-lspconfig").setup_handlers({
-        function(server_name)
-            require("lspconfig")[server_name].setup(coq.lsp_ensure_capabilities({
-                on_attach = on_attach,
-                flags = lsp_flags,
-            }))
-        end,
-        ["ts_ls"] = function()
-            require("lspconfig").ts_ls.setup(coq.lsp_ensure_capabilities({
-                on_attach = on_attach,
-                flags = lsp_flags,
-            }))
-        end,
-        ["elixirls"] = function()
-            local mason_registry = require("mason-registry")
-            local elixirls = mason_registry.get_package("elixir-ls")
-            local elixirls_path = elixirls:get_install_path()
-            require("lspconfig").elixirls.setup(coq.lsp_ensure_capabilities({
-                cmd = { elixirls_path .. "/language_server.sh" },
-                on_attach = on_attach,
-                flags = lsp_flags,
-            }))
-        end,
-        ["omnisharp"] = function()
-            require("lspconfig").omnisharp.setup(coq.lsp_ensure_capabilities({
-                cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-                on_attach = on_attach,
-                flags = lsp_flags,
-            }))
-        end,
-        ["rust_analyzer"] = function()
-            local rt = require("rust-tools")
-            local mason_registry = require("mason-registry")
-            local codelldb = mason_registry.get_package("codelldb")
-            local extension_path = codelldb:get_install_path()
-            local codelldb_path = extension_path .. "/extension/adapter/codelldb"
-            local liblldb_path = extension_path .. "/extension/lldb/lib/liblldb.so"
-            rt.setup({
-                server = coq.lsp_ensure_capabilities({
-                    on_attach = function(client, bufnr)
-                        on_attach(client, bufnr)
-                        local bufopts = get_bufopts(bufnr)
-                        vim.keymap.set("n", "<Leader>rh", rt.hover_actions.hover_actions, bufopts)
-                        vim.keymap.set("n", "<Leader>rc", rt.code_action_group.code_action_group, bufopts)
-                        vim.keymap.set("n", "<Leader>rr", rt.runnables.runnables, bufopts)
-                    end,
-                    flags = lsp_flags,
-                }),
-                tools = {
-                    hover_actions = {
-                        auto_focus = true,
-                    },
-                },
-                dap = {
-                    adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-                },
-            })
-        end,
-        ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup(coq.lsp_ensure_capabilities({
-                on_attach = on_attach,
-                flags = lsp_flags,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                    },
-                },
-            }))
-        end,
-        ["gopls"] = function()
-            require("go").setup()
-            require("lspconfig")["gopls"].setup(coq.lsp_ensure_capabilities({
-                on_attach = on_attach,
-                inlay_hints = {enabled = true},
-                flags = lsp_flags,
-                settings = {
-                    gopls = {
-                        hints = {
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            compositeLiteralTypes = true,
-                            constantValues = true,
-                            functionTypeParameters = true,
-                            parameterNames = true,
-                            rangeVariableTypes = true,
-                        }
-                    }
+
+    vim.lsp.config("*",
+        coq.lsp_ensure_capabilities({
+            flags = lsp_flags,
+            on_attach = on_attach,
+        })
+    )
+
+    -- TODO: look into fixing this
+    -- local mason_registry = require("mason-registry")
+    -- mason_registry.refresh()
+    -- local elixirls = mason_registry.get_package("elixir_ls")
+    -- local elixirls_path = elixirls:get_install_path()
+    -- vim.lsp.config("elixirls",
+    --     coq.lsp_ensure_capabilities({
+    --         cmd = { elixirls_path .. "/language_server.sh" },
+    --         flags = lsp_flags,
+    --         on_attach = on_attach,
+    --     })
+    -- )
+
+    vim.lsp.config("omnisharp", coq.lsp_ensure_capabilities({
+        cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+        on_attach = on_attach,
+        flags = lsp_flags,
+    }))
+
+    require("go").setup()
+
+    vim.lsp.config("gopls", coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+        inlay_hints = {enabled = true},
+        flags = lsp_flags,
+        settings = {
+            gopls = {
+                hints = {
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
                 }
-            }))
-        end,
-        ["clangd"] = function()
-            require("lspconfig")["clangd"].setup(coq.lsp_ensure_capabilities({
-                on_attach = on_attach,
-                flags = lsp_flags,
-                capabilities = {
-                    offsetEncoding = { "utf-16" },
+            }
+        }
+    }))
+
+    -- TODO: switch to rustaceanvim
+    -- local rt = require("rust-tools")
+    -- local mason_registry = require("mason-registry")
+    -- local codelldb = mason_registry.get_package("codelldb")
+    -- local extension_path = codelldb:get_install_path()
+    -- local codelldb_path = extension_path .. "/extension/adapter/codelldb"
+    -- local liblldb_path = extension_path .. "/extension/lldb/lib/liblldb.so"
+    -- rt.setup({
+    --     server = coq.lsp_ensure_capabilities({
+    --         on_attach = function(client, bufnr)
+    --             on_attach(client, bufnr)
+    --             local bufopts = get_bufopts(bufnr)
+    --             vim.keymap.set("n", "<Leader>rh", rt.hover_actions.hover_actions, bufopts)
+    --             vim.keymap.set("n", "<Leader>rc", rt.code_action_group.code_action_group, bufopts)
+    --             vim.keymap.set("n", "<Leader>rr", rt.runnables.runnables, bufopts)
+    --         end,
+    --         flags = lsp_flags,
+    --     }),
+    --     tools = {
+    --         hover_actions = {
+    --             auto_focus = true,
+    --         },
+    --     },
+    --     dap = {
+    --         adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    --     },
+    -- })
+
+    vim.lsp.config("lua_ls", coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+        flags = lsp_flags,
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" },
                 },
-            }))
-        end,
-    })
+            },
+        },
+    }))
+
+    vim.lsp.config("clangd", coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = {
+            offsetEncoding = { "utf-16" },
+        },
+    }))
 
     require("lspconfig").gleam.setup({
         on_attach = on_attach,
@@ -244,22 +238,22 @@ else
     vim.keymap.set("n", "<leader>qq", "<cmd>TroubleToggle quickfix<cr>", opts)
     vim.keymap.set("n", "<leader>gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
-    local null_ls = require("null-ls")
-    null_ls.setup({
-        sources = {
-            null_ls.builtins.formatting.stylua,
-            null_ls.builtins.formatting.prettier,
-            null_ls.builtins.formatting.eslint_d,
-            null_ls.builtins.formatting.shfmt,
-            null_ls.builtins.formatting.sqlformat,
-            null_ls.builtins.formatting.black,
-            null_ls.builtins.formatting.goimports,
-            null_ls.builtins.formatting.gofmt,
-            null_ls.builtins.formatting.rustfmt,
-            null_ls.builtins.formatting.mix,
-            null_ls.builtins.completion.spell,
-        },
-    })
+    -- local null_ls = require("null-ls")
+    -- null_ls.setup({
+    --     sources = {
+    --         null_ls.builtins.formatting.stylua,
+    --         null_ls.builtins.formatting.prettier,
+    --         null_ls.builtins.formatting.eslint_d,
+    --         null_ls.builtins.formatting.shfmt,
+    --         null_ls.builtins.formatting.sqlformat,
+    --         null_ls.builtins.formatting.black,
+    --         null_ls.builtins.formatting.goimports,
+    --         null_ls.builtins.formatting.gofmt,
+    --         null_ls.builtins.formatting.rustfmt,
+    --         null_ls.builtins.formatting.mix,
+    --         null_ls.builtins.completion.spell,
+    --     },
+    -- })
     require("crates").setup({
         completion = {
             coq = {
