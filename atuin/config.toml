@@ -60,4 +60,4 @@
 keymap_mode = "vim-normal"
 
 [theme]
-name = ""
+name = "marine"
