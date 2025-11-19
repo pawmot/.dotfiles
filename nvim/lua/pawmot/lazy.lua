@@ -88,7 +88,7 @@ require("lazy").setup({
 	{
 		"akinsho/bufferline.nvim",
 		-- version = "3.*",
-        branch = 'main',
+		branch = "main",
 	},
 	"airblade/vim-rooter",
 	"editorconfig/editorconfig-vim",
@@ -99,13 +99,13 @@ require("lazy").setup({
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
 					local gs = package.loaded.gitsigns
-	
+
 					local function map(mode, l, r, opts)
 						opts = opts or {}
 						opts.buffer = bufnr
 						vim.keymap.set(mode, l, r, opts)
 					end
-	
+
 					-- Navigation
 					map("n", "]c", function()
 						if vim.wo.diff then
@@ -116,7 +116,7 @@ require("lazy").setup({
 						end)
 						return "<Ignore>"
 					end, { expr = true })
-	
+
 					map("n", "[c", function()
 						if vim.wo.diff then
 							return "[c"
@@ -126,7 +126,7 @@ require("lazy").setup({
 						end)
 						return "<Ignore>"
 					end, { expr = true })
-	
+
 					-- Actions
 					map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 					map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
@@ -143,7 +143,7 @@ require("lazy").setup({
 						gs.diffthis("~")
 					end)
 					map("n", "<leader>td", gs.toggle_deleted)
-	
+
 					-- Text object
 					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 				end,
@@ -169,29 +169,45 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"jay-babu/mason-null-ls.nvim",
+		},
+	},
+	{
 		"williamboman/mason.nvim",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 			"ray-x/lsp_signature.nvim",
-			"simrat39/rust-tools.nvim",
+			{
+				"mrcjkb/rustaceanvim",
+				version = "^6", -- Recommended
+				lazy = false, -- This plugin is already lazy
+			},
 			"ray-x/go.nvim",
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			"folke/trouble.nvim",
 			"simrat39/symbols-outline.nvim",
-            "mason-org/mason-registry",
+			"mason-org/mason-registry",
 			{
 				"glepnir/lspsaga.nvim",
 				event = "Bufread",
 			},
 			{
 				"saecki/crates.nvim",
-				dependencies = {
-					{ "jose-elias-alvarez/null-ls.nvim" },
+				depencenies = {
+					{ "nvimtools/none-ls.nvim" },
 				},
-				event = "Bufread Cargo.toml",
+				tag = "stable",
 				config = function()
 					require("crates").setup({
+						completion = {
+							coq = {
+								enabled = true,
+								name = "crates.nvim",
+							},
+						},
 						null_ls = {
 							enabled = true,
 							name = "crates.nvim",
@@ -230,8 +246,9 @@ require("lazy").setup({
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"theHamsta/nvim-dap-virtual-text",
-            "nvim-neotest/nvim-nio",
+			"nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
+			"jay-babu/mason-nvim-dap.nvim",
 		},
 	},
 	{
@@ -269,15 +286,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"rcarriga/nvim-notify",
-		enabled = false,
-		config = function()
-			---@diagnostic disable-next-line: unused-local
-			local notify = require("notify")
-			--vim.notify = notify
-		end,
-	},
-	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
@@ -295,7 +303,8 @@ require("lazy").setup({
 	{
 		"j-hui/fidget.nvim",
 		config = function()
-			require("fidget").setup({})
+			require("fidget").setup({
+			})
 		end,
 	},
 	{
