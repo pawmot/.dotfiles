@@ -12,6 +12,8 @@ nvm use default
 set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/.local/bin" $PATH
 set -x PATH "$HOME/go/bin" $PATH
+set -x CLIPBOARD_NOGUI 1
+set -x EDITOR "nvim"
 
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
