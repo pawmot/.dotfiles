@@ -29,7 +29,6 @@ else
 			"jdtls",
 			"kotlin_language_server",
 			"lua_ls",
-			"rust_analyzer",
 			"stylua",
 			"tailwindcss",
 			"ts_ls",
@@ -260,6 +259,14 @@ else
 			flags = lsp_flags,
 		})
 	)
+
+    vim.lsp.config(
+        "pyright",
+		coq.lsp_ensure_capabilities({
+			on_attach = on_attach,
+			flags = lsp_flags,
+		})
+    )
 
 	vim.lsp.inlay_hint.enable(true)
 	vim.keymap.set("n", "<leader>i", function()

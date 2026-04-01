@@ -1,0 +1,26 @@
+# Ignore everything by default
+*
+
+# Track config & customizations
+!.gitignore
+!settings.json
+!CLAUDE.md
+!statusline-command.sh
+
+# Custom slash commands, agents, skills, rules
+!commands/
+!commands/**
+!agents/
+!agents/**
+!skills/
+!skills/**
+!rules/
+!rules/**
+
+# Plugins list (but not plugin cache/state)
+!plugins/
+!plugins/marketplace.json
+
+# Never track, even if un-ignored above
+.credentials.json
+settings.local.json

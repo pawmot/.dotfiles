@@ -12,6 +12,7 @@
     ~/.config/fish: fish
     ~/.config/starship.toml: starship.toml
     ~/.config/atuin: atuin
+    ~/.claude: claude
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -85,3 +85,6 @@ symbol = "🅢 "
 [time]
 disabled = false
 
+# [custom.ai_limits]
+# command = 'echo AI'
+# when = 'look_for_ai'
