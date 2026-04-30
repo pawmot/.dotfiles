@@ -28,4 +28,17 @@ if [ -n "$five_pct" ]; then
   fi
 fi
 
+week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+week_reset=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+
+if [ -n "$week_pct" ]; then
+  pct_fmt=$(printf '%.0f' "$week_pct")
+  if [ -n "$week_reset" ]; then
+    reset_fmt=$(date -d "@${week_reset}" +%H:%M 2>/dev/null || date -r "${week_reset}" +%H:%M 2>/dev/null)
+    status="$status [7d: ${pct_fmt}%@${reset_fmt}]"
+  else
+    status="$status [7d: ${pct_fmt}%]"
+  fi
+fi
+
 printf "%s" "$status"
