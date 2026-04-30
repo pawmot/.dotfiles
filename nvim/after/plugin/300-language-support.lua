@@ -9,15 +9,6 @@ else
 		["keymap"] = { recommended = false },
 	}
 
-	-- require("coq_3p")({
-	--     { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
-	-- })
-	vim.keymap.set("i", "<C-F>", 'copilot#Accept("\\<CR>")', {
-		expr = true,
-		replace_keycodes = false,
-	})
-	vim.g.copilot_no_tab_map = true
-
 	mason.setup()
 	-- TODO: use mason-nvim-dap for DAP and mason-null-ls for linters
 	require("mason-lspconfig").setup({

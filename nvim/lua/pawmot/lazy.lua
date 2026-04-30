@@ -264,7 +264,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 		end,
 	},
-	"github/copilot.vim",
 	"David-Kunz/jester",
 	"folke/which-key.nvim",
 	"folke/todo-comments.nvim",
