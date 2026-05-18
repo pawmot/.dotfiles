@@ -1,0 +1,4 @@
+- [ ] Rainbow brackets
+- [ ] Rainbow indent
+- [ ] Auto braces
+- [ ] Auto tag wtf?

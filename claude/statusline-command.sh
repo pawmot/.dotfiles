@@ -11,9 +11,10 @@ fi
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 status="$status [$model]"
 
-context_used=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+context_used=$(echo "$input" | jq -r '.context_window.current_usage | [.input_tokens, .cache_creation_input_tokens, .cache_read_input_tokens] | add' | numfmt --to=si --format="%.1f")
+context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
-status="$status [ctx: ${context_used}%]"
+status="$status [ctx: ${context_used} (${context_pct}%)]"
 
 five_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_reset=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')

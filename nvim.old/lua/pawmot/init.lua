@@ -1,4 +1,3 @@
 require('pawmot.options')
 require('pawmot.remap')
-require('pawmot.pack')
-
+require('pawmot.lazy')
