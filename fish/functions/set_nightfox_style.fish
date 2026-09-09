@@ -9,14 +9,22 @@ function set_nightfox_style -a style
     echo "Setting kitty..."
     set -f stylefox (echo "$style"fox)
     sed -E -i.bak "s/include themes\/[A-Za-z]*\/[A-Za-z_]*.conf/include themes\/nightfox\/$stylefox.conf/" $HOME/.dotfiles/kitty/kitty.conf && rm $HOME/.dotfiles/kitty/kitty.conf.bak
+    echo "Setting ghostty"
+    sed -E -i.bak "s/theme = [A-Za-z]*/theme = $stylefox/" $HOME/.dotfiles/ghostty/config && rm $HOME/.dotfiles/ghostty/config.bak
     echo "Setting tmux..."
     sed -E -i.bak "s/set -g @plugin 'pawmot\/[A-Za-z]*-tmux'/set -g @plugin 'pawmot\/nightfox-tmux'/" $HOME/.dotfiles/tmux.conf && rm $HOME/.dotfiles/tmux.conf.bak
     sed -E -i.bak "s/set -g @[A-Za-z]*_style '[A-Za-z]*'/set -g @nightfox_style '$stylefox'/" $HOME/.dotfiles/tmux.conf && rm $HOME/.dotfiles/tmux.conf.bak
     # FIXME: The following does not work very well, it seems that the colorscheme needs to be set in lazy.lua
     echo "Setting neovim..."
-    sed -E -i.bak "s/vim.cmd.colorscheme '[A-Za-z\-]*'/vim.cmd.colorscheme '$stylefox'/" $HOME/.dotfiles/nvim/after/plugin/050-colorscheme.lua && rm $HOME/.dotfiles/nvim/after/plugin/050-colorscheme.lua.bak
-    echo "Reloading kitty..."
-    kill -SIGUSR1 $(pgrep -f kitty)
+    sed -E -i.bak "s/vim.cmd.colorscheme\(\"[A-Za-z\-]*\"\)/vim.cmd.colorscheme(\"$stylefox\")/" $HOME/.dotfiles/nvim/lua/pawmot/pack.lua && rm $HOME/.dotfiles/nvim/lua/pawmot/pack.lua.bak
+    if pgrep -f kitty >/dev/null
+        echo "Reloading kitty..."
+        kill -SIGUSR1 $(pgrep -f kitty)
+    end
+    if pgrep -f ghostty >/dev/null
+        echo "Reloading ghostty"
+        kill -SIGUSR2 $(pgrep -f ghostty)
+    end
     echo "Reloading tmux..."
     tmux source-file $HOME/.dotfiles/tmux.conf
     echo "Changing colorscheme in all running neovim instances..."

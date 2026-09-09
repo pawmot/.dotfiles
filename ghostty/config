@@ -1,0 +1,4 @@
+command = /opt/homebrew/bin/fish
+theme = carbonfox
+font-family = "JetBrains Mono"
+font-size = 15
