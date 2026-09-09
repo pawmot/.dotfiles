@@ -12,6 +12,7 @@
     ~/.config/fish: fish
     ~/.config/starship.toml: starship.toml
     ~/.config/atuin: atuin
+    ~/.config/ccstatusline: ccstatusline
     ~/.claude: claude
     ~/.config/ghostty: ghostty
 
