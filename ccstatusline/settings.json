@@ -1,0 +1,117 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan",
+        "rawValue": true
+      },
+      {
+        "id": "fa403b67-6609-4883-9cd0-90fd8e405cfe",
+        "type": "separator"
+      },
+      {
+        "id": "a9320c12-81c1-4982-a534-70a1edd4af74",
+        "type": "thinking-effort",
+        "rawValue": true
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "3",
+        "type": "context-length",
+        "color": "brightGreen",
+        "bold": true,
+        "rawValue": true
+      },
+      {
+        "id": "6b3ce633-a502-4cfe-9936-a0a71655def7",
+        "type": "separator"
+      },
+      {
+        "id": "b79d453e-6c97-4d19-9ef8-60bb86b4dd0d",
+        "type": "context-percentage",
+        "color": "brightYellow",
+        "rawValue": true,
+        "metadata": {
+          "inverse": "false"
+        }
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
+        "id": "5",
+        "type": "git-branch",
+        "color": "magenta",
+        "rawValue": true
+      }
+    ],
+    [
+      {
+        "id": "d1c0bba9-e13b-48f9-a4ff-b157698f6601",
+        "type": "session-usage",
+        "rawValue": true
+      },
+      {
+        "id": "570ddb82-657c-4c03-b1d9-a867e13542a5",
+        "type": "separator"
+      },
+      {
+        "id": "6b691c32-b335-4055-b213-41c6558d0b90",
+        "type": "reset-timer",
+        "rawValue": true
+      },
+      {
+        "id": "436d74db-fca8-4b7d-a1cf-d12417a7b40e",
+        "type": "separator"
+      },
+      {
+        "id": "ff98980b-7685-4ef3-ad8c-062e61a55103",
+        "type": "weekly-usage",
+        "color": "brightBlack",
+        "rawValue": true
+      },
+      {
+        "id": "cc740208-1bce-42e5-8b15-f592602eab9f",
+        "type": "separator"
+      },
+      {
+        "id": "1c55c21c-3835-42e7-9991-fa10945a1ef1",
+        "type": "weekly-reset-timer",
+        "color": "brightBlack",
+        "rawValue": true
+      }
+    ],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  },
+  "installation": {
+    "method": "pinned",
+    "installedVersion": "2.2.19"
+  }
+}
